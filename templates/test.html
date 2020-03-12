@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>始终居中</title>
+		<style type="text/css">
+			/*.content{
+				width: 200px;
+				height: 200px;
+				background: #ffcccc;
+				position: fixed;
+				right: 0px;
+				bottom: 50%;
+				margin-bottom: -100px;
+			}*/
+			.content{
+				width: 200px;
+				height: 200px;
+				background: #ffcccc;
+				position: fixed;
+				right: 0;
+				/*
+				 calc 是css3中,可以用来计算一些值
+				  -  两边要有 空格
+				 * */
+
+				bottom: calc(50% - 100px);
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="one"></div>
+		<div class="content">星道-人工智能，决胜未来</div>
+	</body>
+</html>

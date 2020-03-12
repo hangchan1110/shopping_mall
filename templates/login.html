@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登入</title>
+    <style type="text/css">
+        {% load static %}
+        #one {
+            width: 1500px;
+            height: 800px;
+            background-image: url("/static/timg2.jpg");
+        }
+
+        .box2 {
+            width: 400px;
+            height: 300px;
+            border: solid azure 2px;
+            margin: 10px 5px 10px 5px;
+            padding: 1px 1px 30px 1px;
+            position: absolute;
+            left: 550px;
+            top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="one">
+    <div class="box2" align="center">
+        <h1>欢迎登入</h1>
+        <form action="/http/log/" method="post">
+            {% csrf_token %}
+
+            账号：<input type="text" name="id"><br>
+            密码：<input type="text" name="password"><br><br>
+            <input type="submit" value="登录"><br><br>
+        </form>
+        <h3 align="center"><a href="{% url 'register' %}">注册</a></h3>
+        {{ tip }}
+    </div>
+</div>
+</body>
+</html>

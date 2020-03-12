@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <style type="text/css">
+        .one {
+            width: 200px;
+            height: 600px;
+            position: absolute;
+            left: 20px;
+            top: 100px;
+
+        }
+
+        .one_1 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+            top: 50px;
+            background-color: aqua;
+
+        }
+
+        .one_2 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+            top: 125px;
+            background-color: aqua;
+
+        }
+
+        .one_3 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 200px;
+
+        }
+
+        .one_4 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 280px;
+
+        }
+
+        .one_5 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 360px;
+
+        }
+
+        .two {
+            width: 800px;
+            height: 600px;
+            position: absolute;
+            left: 400px;
+            top: 100px;
+
+        }
+
+        .three {
+            width: 200px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 20px;
+            top: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="three"><p align="center"><a href="{% url 'home_page' %}">首页</a></p></div>
+<div class="one">
+    <div class="one_1"><p align="center"><a href="{% url 'alter_user_data' %}">修改用户名及密码</a></p></div>
+    <div class="one_2"><p align="center"><a href="{% url 'show_money' %}">查看余额</a></p></div>
+    <div class="one_3"><p align="center"><a href="{% url 'add_money' %}">充值</a></p></div>
+    <div class="one_4"><p align="center"><a href="{% url 'purchase_history' %}">购买记录</a></p></div>
+    <div class="one_5"><p align="center"><a href="{% url 'get_record' %}">浏览记录</a></p></div>
+</div>
+<div class="two" align="center">
+    <h2>评价及评分</h2>
+    {% csrf_token %}
+    <form action="/http/assess/{{ key1 }}" method="post">
+        评分：<input type="text" name="score"><br>
+        <h3>评价</h3>
+        <textarea name="assess" cols="40" rows="6"></textarea><br><br>
+        <input type="submit" value="提交">
+        <h3 style="color: red">{{ key }}</h3>
+    </form>
+</div>
+</body>
+</html>

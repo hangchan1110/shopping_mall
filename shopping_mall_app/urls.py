@@ -1,0 +1,47 @@
+from django.conf.urls import url
+from django.urls import path
+
+from shopping_mall_app.views import *
+
+urlpatterns = [
+    url(r'^page/(.+)$', page, name='page'),
+    path('home/', home_page, name='home_page'),
+    path('log/', login, name='login'),
+    path('reg/', register, name='register'),
+    path('login_out/', login_out, name='login_out'),
+    path('per/', personal, name='personal'),
+    path('alter/', alter_user_data, name='alter_user_data'),
+    path('show_money/', show_money, name='show_money'),
+    path('add_money/', add_money, name='add_money'),
+    path('background_admin/', backgroud_admin, name='background_admin'),
+    path('shop_store_goods/', shop_store_goods, name='shop_store_goods'),
+    path('kind_male/', kind_male, name='kind_male'),
+    path('kind_female/', kind_female, name='kind_female'),
+    url(r"^female_goods/(.+)$", female_goods, name="female_goods"),
+    path('kind_shoes/', kind_shoes, name='kind_shoes'),
+    url(r"^shoes_goods/(.+)$", shoes_goods, name="shoes_goods"),
+    path('kind_clothes/', kind_clothes, name='kind_clothes'),
+    url(r"^clothes_goods/(.+)$", clothes_goods, name="clothes_goods"),
+    url(r"^goods_info/(.+)$", goods_info, name="goods_info"),
+    url(r"^shopping_cart/(.+)$", shopping_cart, name="shopping_cart"),
+    path('shop_cart_page/', shop_cart_page, name='shop_cart_page'),
+    path('pay_bill/', pay_bill, name='pay_bill'),
+    path('purchase_history/', purchase_history, name='purchase_history'),
+    url(r"^del_history/(.+)$", del_history, name="del_history"),
+    path('get_record/', get_record, name='get_record'),
+    url(r"^del_record/(.+)$", del_record, name="del_record"),
+    path('search/', search_for_goods, name='search_for_goods'),
+    path('delete_goods/', delete_goods, name='delete_goods'),
+    url(r"^del_goods/(.+)$", del_goods, name="del_goods"),
+    url(r"^add_goods/(.+)$", add_goods, name="add_goods"),
+    path('reset_money/', reset_money, name='reset_money'),
+    path('settle_money/', settle_money, name='settle_money'),
+    path('user_consume/', user_consume, name='user_consume'),
+    path('goods_sell/', goods_sell, name='goods_sell'),
+    url(r"^make_up/(.+)$", make_up, name="make_up"),
+    url(r"^assess/(.+)$", assess, name="assess"),
+    url(r"^del_cart_info/(.+)$", del_cart_info, name="del_cart_info"),
+    url(r"^add_goods_num/(.+)$", add_goods_num, name="add_goods_num"),
+    url(r"^reduce_goods_num/(.+)$", reduce_goods_num, name="reduce_goods_num"),
+
+]

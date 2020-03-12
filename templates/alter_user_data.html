@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改用户名及密码</title>
+    <style type="text/css">
+        .one {
+            width: 200px;
+            height: 600px;
+            position: absolute;
+            left: 20px;
+            top: 100px;
+
+        }
+
+        .one_1 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 50px;
+
+        }
+
+        .one_2 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 125px;
+
+        }
+
+        .one_3 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 200px;
+
+        }
+
+        .one_4 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 280px;
+
+        }
+
+        .one_5 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 360px;
+
+        }
+
+        .two {
+            width: 800px;
+            height: 600px;
+            position: absolute;
+            left: 400px;
+            top: 100px;
+
+        }
+
+        .three {
+            width: 200px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 20px;
+            top: 20px;
+
+        }
+          .four {
+            width: 200px;
+            height: 40px;
+            position: absolute;
+              background-color: aqua;
+            right: 20px;
+            top: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="three"><p align="center"><a href="{% url 'home_page' %}">首页</a></p></div>
+<div class="four"><p align="center"><a href="{% url 'personal' %}">个人中心</a></p></div>
+<div class="one">
+    <div class="one_1"><p align="center">修改用户名及密码</p></div>
+    <div class="one_2"><p align="center"><a href="{% url 'show_money' %}">查看余额</a></p></div>
+    <div class="one_3"><p align="center"><a href="{% url 'add_money' %}">充值</a></p></div>
+    <div class="one_4"><p align="center"><a href="{% url 'purchase_history' %}">购买记录</a></p></div>
+    <div class="one_5"><p align="center"><a href="{% url 'get_record' %}">浏览记录</a></p></div>
+</div>
+<div class="two" align="center">
+       <h1>修改用户信息</h1><br><br><br>
+
+        <form action="/http/alter/" method="post">
+            {% csrf_token %}
+            请输入账号：<input type="text" name="id"><br><br><br>
+            请输入密码：<input type="text" name="password"><br><br><br>
+            请输入新用户名：<input type="text" name="new_username"><br><br><br>
+            请输入新密码：<input type="text" name="new_password"><br><br><br>
+            请确认新密码：<input type="text" name="con_new_password"><br><br><br>
+            <input type="submit" value="提交">
+            <p style="color: red">{{ key }}</p>
+        </form>
+</div>
+</body>
+</html>

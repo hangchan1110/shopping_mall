@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <style type="text/css">
+        .one {
+            width: 200px;
+            height: 600px;
+            position: absolute;
+            left: 20px;
+            top: 100px;
+
+        }
+
+        .one_1 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 50px;
+
+        }
+
+        .one_2 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 125px;
+
+        }
+
+        .one_3 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 200px;
+
+        }
+
+        .one_4 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 280px;
+
+        }
+
+        .one_5 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 360px;
+
+        }
+
+        .two {
+            width: 1000px;
+            height: 600px;
+            position: absolute;
+            left: 350px;
+            top: 100px;
+            overflow: scroll;
+
+        }
+
+        .three {
+            width: 200px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 20px;
+            top: 20px;
+
+        }
+
+        .four {
+            width: 530px;
+            height: 30px;
+            position: absolute;
+            left: 600px;
+            top: 50px;
+
+        }
+
+        .four_1 {
+            width: 150px;
+            height: 30px;
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+<div class="three"><p align="center"><a href="{% url 'home_page' %}">首页</a></p></div>
+<div class="one">
+    <div class="one_1"><p align="center"><a href="{% url 'shop_store_goods' %}">商品上架</a></p></div>
+    <div class="one_2"><p align="center">商品下架及修改金额</p></div>
+    <div class="one_3"><p align="center"><a href="{% url 'settle_money' %}">金额结算</a></p></div>
+    <div class="one_4"><p align="center"><a href="{% url 'user_consume' %}">用户消费信息</a></p></div>
+    <div class="one_5"><p align="center"><a href="{% url 'goods_sell' %}">商品销售信息</a></p></div>
+</div>
+<div class="two">
+    <table align="center" border="1px" bordercolor="#ffcccc" width="800px" height="600px">
+        <tr align="center">
+            <td>商品号</td>
+            <td>种类</td>
+            <td>描述</td>
+            <td>图片</td>
+            <td>价格</td>
+            <td></td>
+        </tr>
+        {% for k in key %}
+            <tr align="center">
+                <td>{{ k.key0 }}</td>
+                <td>{{ k.key1 }}</td>
+                <td>{{ k.key7 }}</td>
+                <td>{% load static %}
+                    <img src="/static/{{ k.key6 }}.jpg" alt="加载失败" width="90px" height="60px"></td>
+                <td>{{ k.key5 }}</td>
+
+                <td><a href="{% url 'del_goods' k.key0 %}">下架</a></td>
+
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+<div class="four">
+    <form action="/http/reset_money/" method="post">
+        {% csrf_token %}
+        <div class="four_1">
+            商品号：<input type="text" name="goods_id" style="width: 50px; height: 20px">
+        </div>
+        <div class="four_1" style="width: 200px">
+            修改的金额：<input type="text" name="reset_money" style="width: 50px; height: 20px">
+        </div>
+        <div class="four_1">
+            <input type="submit" value="确认">
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

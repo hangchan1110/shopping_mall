@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style type="text/css">
+        .one {
+            width: 1500px;
+            height: 40px;
+            position: absolute;
+            left: 15px;
+
+        }
+
+        .one_1 {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+
+        .one_2 {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 40px;
+            top: 0;
+
+        }
+
+        .one_3 {
+            width: 80px;
+            height: 40px;
+            position: absolute;
+            left: 80px;
+            top: 0;
+
+        }
+
+        .one_4 {
+            width: 150px;
+            height: 40px;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+        }
+
+        .one_5 {
+            width: 100px;
+            height: 40px;
+            position: absolute;
+            right: 150px;
+            top: 0;
+
+        }
+
+        .two {
+            width: 620px;
+            height: 40px;
+            position: absolute;
+            top: 100px;
+            left: 450px;
+
+        }
+
+        .three {
+            width: 250px;
+            height: 550px;
+            position: absolute;
+            top: 200px;
+            left: 20px;
+
+        }
+
+        .three_1 {
+            width: 247px;
+            height: 50px;
+            float: left;
+
+        }
+
+        .four {
+            width: 296px;
+            height: 350px;
+            float: left;
+        }
+
+        #id {
+            width: 1200px;
+            height: 1000px;
+            position: absolute;
+            left: 300px;
+            top: 200px;
+            overflow: scroll;
+        }
+
+        .content {
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            right: 40px;
+            bottom: calc(50% - 100px);
+        }
+          .one_6 {
+            width: 80px;
+            height: 40px;
+            position: absolute;
+            left: 140px;
+            top: 0;
+
+        }
+    </style>
+
+</head>
+<body>
+<div class="one">
+    <div class="one_1" align="top"><p align="center"><a href="{% url 'register' %}">注册</a></p></div>
+    <div class="one_2" align="top"><p align="center"><a href="{% url 'login' %}">登入</a></p></div>
+    <div class="one_3" align="top"><p align="center"><a href="{% url 'personal' %}">个人中心</a></p></div>
+ <div class="one_6" align="top"><p align="center"><a href="{% url 'login_out' %}">注销</a></p></div>
+    <div class="one_4">
+        {% if k1 %}
+            <p>{{ k1 }}<a href="{% url 'background_admin' %}">.后台管理</a></p>
+        {% elif k2 %}
+            <p>{{ k2 }}</p>
+        {% else %}
+            <p>{{ k3 }}</p>
+        {% endif %}
+    </div>
+    <div class="one_5"><p align="center"><a href="{% url 'shop_cart_page' %}">购物车</a></p></div>
+</div>
+<div align="left" class="two">
+    <form action="/http/search/" method="post">
+        {% csrf_token %}
+        <input type="text" name="search" style="height: 35px;width: 550px">
+        <input type="submit" value="搜索" style="height: 40px;width: 60px">
+    </form>
+</div>
+<div class="three">
+    <div class="three_1" align="center" style="background: aqua"><h2 style="color: brown">
+        <a href="{% url 'home_page' %}">全部商品</a>
+    </h2></div>
+    <br><br>
+    <br><br><br><br>
+    <div class="three_1" align="center"><h2 style="color: brown"><a href="{% url 'kind_male' %}">上装</a></h2></div>
+    <br><br><br><br>
+    <div class="three_1" style="height: 200px">
+        <h2 style="color: brown" align="center">下装</h2>
+        <p><a href="{% url 'female_goods' '短裤' %}">短裤</a></p>
+        <p><a href="{% url 'female_goods' '长裤' %}">长裤</a></p>
+    </div>
+    <br><br><br><br>
+    <div class="three_1" align="center"><h2 style="color: brown"><a href="{% url 'kind_shoes' %}">鞋子</a></h2></div>
+    <br><br><br><br>
+    <div class="three_1" align="center"><h2 style="color: brown"><a href="{% url 'kind_clothes' %}">配件</a></h2></div>
+    <br><br><br><br>
+
+</div>
+<div id="id">
+    {% for k in key %}
+        <div class="four" align="center">
+            {% load static %}
+            <a href="{% url 'goods_info' k.key0 %}">
+                <img src="/static/{{ k.key6 }}.jpg" alt="加载失败" width="200px" height="150px">
+            </a>
+            <h2>{{ k.key7|truncatechars:15 }}</h2><br>
+            <h3>价格:{{ k.key5 }}元</h3><br>
+        </div>
+    {% endfor %}
+</div>
+<div class="content">
+    <a href="https://www.nbastore.cn/">
+        <img src="/static/worrios.jpg" alt="加载失败" width="200px" height="180px"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <style type="text/css">
+        {% load static %}
+        #one {
+            width: 1500px;
+            height: 800px;
+            background-image: url("/static/timg2.jpg");
+        }
+
+        .box1 {
+            width: 400px;
+            height: 550px;
+            border: solid azure 2px;
+            position: absolute;
+            left: 550px;
+            top: 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="one">
+    <div class="box1" align="center">
+        <h1>注册界面</h1>
+
+        <form action="/http/reg/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% load static %}
+            请输入账号：&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="id"><br>
+            请输入用户名：<input type="text" name="username"><br>
+            请输入密码：&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="password"><br>
+            请确认密码：&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="con_password"><br><br><br>
+            <h3>上传头像</h3><br>
+            <input type="file" name="head_img"><br>
+            <input type="submit" value="提交">
+        </form>
+        <br>
+        <h3 align="center"><a href="{% url 'login' %}">登入页面</a></h3>
+        {{ key }}
+    </div>
+</div>
+</body>
+</html>

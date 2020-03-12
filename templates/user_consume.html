@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <style type="text/css">
+        .one {
+            width: 200px;
+            height: 600px;
+            position: absolute;
+            left: 20px;
+            top: 100px;
+
+        }
+
+        .one_1 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 50px;
+
+        }
+
+        .one_2 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 125px;
+
+        }
+
+        .one_3 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 200px;
+
+        }
+
+        .one_4 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 280px;
+
+        }
+
+        .one_5 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 360px;
+
+        }
+
+        .two {
+            width: 1000px;
+            height: 600px;
+            position: absolute;
+            left: 350px;
+            top: 100px;
+            overflow: scroll;
+
+        }
+
+        .three {
+            width: 200px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 20px;
+            top: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="three"><p align="center"><a href="{% url 'home_page' %}">首页</a></p></div>
+<div class="one">
+    <div class="one_1"><p align="center"><a href="{% url 'shop_store_goods' %}">商品上架</a></p></div>
+    <div class="one_2"><p align="center"><a href="{% url 'delete_goods' %}">商品下架及修改金额</a></p></div>
+    <div class="one_3"><p align="center"><a href="{% url 'settle_money' %}">金额结算</a></p></div>
+    <div class="one_4"><p align="center">用户消费信息</p></div>
+    <div class="one_5"><p align="center"><a href="{% url 'goods_sell' %}">商品销售信息</a></p></div>
+</div>
+<div class="two">
+    <table align="center" border="1px" bordercolor="#ffcccc" width="300px" height="200px">
+
+        <tr align="center">
+            <td>用户id</td>
+            <td>消费总金额</td>
+        </tr>
+        {% for k,v in key.items %}
+            <tr align="center">
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+    <table align="center" border="1px" bordercolor="#ffcccc" width="800px" height="600px">
+        <tr align="center">
+            <td>用户id</td>
+            <td>订单号</td>
+            <td>描述</td>
+            <td>图片</td>
+            <td>价格</td>
+            <td>购买数量</td>
+            <td>购买时间</td>
+        </tr>
+        {% for k in key1 %}
+            <tr align="center">
+                <td>{{ k.key10 }}</td>
+                <td>{{ k.key9 }}</td>
+                <td>{{ k.key7 }}</td>
+                <td>{% load static %}
+                    <img src="/static/{{ k.key6 }}.jpg" alt="加载失败" width="90px" height="60px"></td>
+                <td>{{ k.key5 }}</td>
+                <td>{{ k.key11 }}</td>
+                <td>{{ k.key12 }}</td>
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+</body>
+</html>

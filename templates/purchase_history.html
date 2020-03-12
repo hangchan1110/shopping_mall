@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>余额</title>
+    <style type="text/css">
+        .one {
+            width: 200px;
+            height: 600px;
+            position: absolute;
+            left: 20px;
+            top: 100px;
+
+        }
+
+        .one_1 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 50px;
+
+        }
+
+        .one_2 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 125px;
+
+        }
+
+        .one_3 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 200px;
+
+        }
+
+        .one_4 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 280px;
+
+        }
+
+        .one_5 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 360px;
+
+        }
+
+        #id {
+            width: 1250px;
+            height: 800px;
+            position: absolute;
+            left: 300px;
+            top: 100px;
+            overflow: scroll;
+        }
+
+        .three {
+            width: 200px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 20px;
+            top: 20px;
+
+        }
+
+        .four {
+            width: 200px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            right: 20px;
+            top: 20px;
+
+        }
+
+        .five {
+            width: 600px;
+            height: 550px;
+            float: left;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="three"><p align="center"><a href="{% url 'home_page' %}">首页</a></p></div>
+<div class="four"><p align="center"><a href="{% url 'personal' %}">个人中心</a></p></div>
+<div class="one">
+    <div class="one_1"><p align="center"><a href="{% url 'alter_user_data' %}">修改用户名及密码</a></p></div>
+    <div class="one_2"><p align="center"><a href="{% url 'show_money' %}">查看余额</a></p></div>
+    <div class="one_3"><p align="center"><a href="{% url 'add_money' %}">充值</a></p></div>
+    <div class="one_4"><p align="center">购买记录</p></div>
+    <div class="one_5"><p align="center"><a href="{% url 'get_record' %}">浏览记录</a></p></div>
+</div>
+<div id="id">
+    {% for k in key %}
+        <div class="five" align="left">
+            <h2>订单号：{{ k.key9 }}</h2>
+            {% load static %}
+            <a href="{% url 'goods_info' k.key0 %}">
+                <img src="/static/{{ k.key6 }}.jpg" alt="加载失败" width="200px" height="150px">
+            </a><br>
+            <h2>{{ k.key7 }}</h2><br>
+            <h3>价格:{{ k.key5 }}元</h3><br>
+            <h3><a href="{% url 'assess' k.key9 %}" style="color: blue ">评价及评分</a></h3>
+            <h4><a href="{% url 'del_history' k.key9 %}" style="color: red ">删除该订单</a></h4>
+
+        </div>
+
+    {% endfor %}
+
+
+</div>
+</body>
+</html>

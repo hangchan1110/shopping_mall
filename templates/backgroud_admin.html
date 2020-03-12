@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <style type="text/css">
+        .one {
+            width: 200px;
+            height: 600px;
+            position: absolute;
+            left: 20px;
+            top: 100px;
+
+        }
+
+        .one_1 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 50px;
+
+        }
+
+        .one_2 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 125px;
+
+        }
+
+        .one_3 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 200px;
+
+        }
+
+        .one_4 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 280px;
+
+        }
+
+        .one_5 {
+            width: 195px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 0;
+            top: 360px;
+
+        }
+
+        .two {
+            width: 800px;
+            height: 600px;
+            position: absolute;
+            left: 400px;
+            top: 100px;
+
+        }
+
+        .three {
+            width: 200px;
+            height: 40px;
+            position: absolute;
+            background-color: aqua;
+            left: 20px;
+            top: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<div class="three"><p align="center"><a href="{% url 'home_page' %}">首页</a></p></div>
+<div class="one">
+    <div class="one_1"><p align="center"><a href="{% url 'shop_store_goods' %}">商品上架</a></p></div>
+    <div class="one_2"><p align="center"><a href="{% url 'delete_goods' %}">商品下架及修改金额</a></p></div>
+    <div class="one_3"><p align="center"><a href="{% url 'settle_money' %}">金额结算</a></div>
+    <div class="one_4"><p align="center"><a href="{% url 'user_consume' %}">用户消费信息</a></div>
+    <div class="one_5"><p align="center"><a href="{% url 'goods_sell' %}">商品销售信息</a></p></div>
+</div>
+<div class="two">
+    {#    <h1>商品上架</h1>#}
+    {##}
+    {#    <form action="/http/add_goods/" method="post" enctype="multipart/form-data">#}
+    {#        {% csrf_token %}#}
+    {#        {% load static %}#}
+    {#        请输入种类：<input type="text" name="kinds"><br>#}
+    {#        请输入类别：<input type="text" name="category"><br>#}
+    {#        请输入尺码：<input type="text" name="size"><br>#}
+    {#        请输入名称：<input type="text" name="goods_name"><br>#}
+    {#        请输入价格：<input type="text" name="price"><br>#}
+    {#        请输入数量：<input type="text" name="amount"><br>#}
+    {#        <h3>上传商品图片</h3><br>#}
+    {#        <input type="file" name="goods_img"><br>#}
+    {#        <h3>商品介绍</h3>#}
+    {#        <textarea name="goods_info" cols="40" rows="6">#}
+    {#        </textarea><br><br>#}
+    {#        <input type="submit" value="提交">#}
+    {#    </form>#}
+    {#    <br>#}
+    <h1 align="center">后台管理员</h1>
+    {% load static %}
+    <h2>头像：<img src="/static/{{ key3 }}.jpg" alt="无头像" width="100px" height="100px"></h2>
+    <h2>账号：{{ key1 }}</h2>
+    <h2>用户名：{{ key2 }}</h2><br>
+    <h2 style="color: red">{{ key4 }}</h2><br>
+</div>
+</body>
+</html>

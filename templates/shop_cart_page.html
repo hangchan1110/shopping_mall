@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style type="text/css">
+        .one {
+            width: 1500px;
+            height: 40px;
+            position: absolute;
+            left: 15px;
+
+        }
+
+        .one_1 {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+
+        .one_2 {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 40px;
+            top: 0;
+
+        }
+
+        .one_3 {
+            width: 80px;
+            height: 40px;
+            position: absolute;
+            left: 80px;
+            top: 0;
+
+        }
+
+        .one_4 {
+            width: 150px;
+            height: 40px;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+        }
+
+        .four {
+            width: 296px;
+            height: 420px;
+            float: left;
+        }
+
+        .five {
+            width: 100px;
+            height: 80px;
+            position: absolute;
+            left: 700px;
+            top: 100px;
+
+        }
+
+        .six {
+            width: 1470px;
+            height: 450px;
+            position: absolute;
+            left: 25px;
+            top: 270px;
+            overflow: scroll;
+        }
+
+        .seven {
+            width: 500px;
+            height: 50px;
+            position: absolute;
+            left: 0;
+            top: 200px;
+        }
+
+        .seven_box {
+            width: 200px;
+            height: 50px;
+            float: left;
+        }
+
+        .one_5 {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+            top: 50px;
+
+        }
+    </style>
+
+</head>
+<body>
+<div class="one">
+    <div class="one_1" align="top"><p align="center"><a href="{% url 'register' %}">注册</a></p></div>
+    <div class="one_2" align="top"><p align="center"><a href="{% url 'login' %}">登入</a></p></div>
+    <div class="one_3" align="top"><p align="center"><a href="{% url 'personal' %}">个人中心</a></p></div>
+    <div class="one_4">
+        {% if k1 %}
+            <p>{{ k1 }}<a href="{% url 'background_admin' %}">.后台管理</a></p>
+        {% elif k2 %}
+            <p>{{ k2 }}</p>
+        {% else %}
+            <p>{{ k3 }}</p>
+        {% endif %}
+    </div>
+    <div class="one_5">
+        <p align="center"><a href="{% url 'home_page' %}">首页</a></p>
+    </div>
+</div>
+<div class="five"><h1>购物车</h1></div>
+<div class="seven" align="center">
+    <div class="seven_box"><p>总金额:{{ tip }}&nbsp;&nbsp;<a href="{% url 'pay_bill' %}">结算</a></p></div>
+    <div class="seven_box" style="width: 50px"><p><a href="{% url 'add_money' %}">充值</a></p></div>
+    <div class="seven_box" align="left"><p style="color: red">{{ tip1 }}</p></div>
+</div>
+<div class="six">
+    {% for k in key %}
+        <div class="four" align="center">
+            {% load static %}
+            <img src="/static/{{ k.key6 }}.jpg" alt="加载失败" width="200px" height="150px"><br>
+            <h3>尺码：{{ k.key4 }}</h3>
+            <h3>价格:{{ k.key5 }}元</h3>
+            <h3>剩余数量:{{ k.key8 }}</h3>
+            <h3><a href="{% url 'reduce_goods_num' k.key0 %}" style="font-size: 50px">-</a>{{ k.key10 }}<a
+                    href="{% url 'add_goods_num' k.key0 %}" style="font-size: 38px">+</a></h3>
+            <h4><a href="{% url 'del_cart_info' k.key9 %}">删除</a></h4>
+            {% csrf_token %}
+        </div>
+    {% endfor %}
+
+</div>
+</body>
+</html>

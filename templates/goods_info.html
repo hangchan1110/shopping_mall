@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style type="text/css">
+
+        .one {
+            width: 1500px;
+            height: 40px;
+            position: absolute;
+            left: 15px;
+
+        }
+
+        .one_1 {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+
+        .one_2 {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 40px;
+            top: 0;
+
+        }
+
+        .one_3 {
+            width: 80px;
+            height: 40px;
+            position: absolute;
+            left: 80px;
+            top: 0;
+
+        }
+
+        .one_4 {
+            width: 150px;
+            height: 40px;
+            position: absolute;
+            right: 0;
+            top: 0;
+
+        }
+
+        .one_5 {
+            width: 100px;
+            height: 40px;
+            position: absolute;
+            right: 150px;
+            top: 0;
+
+        }
+
+        .two {
+            width: 620px;
+            height: 40px;
+            position: absolute;
+            top: 100px;
+            left: 450px;
+
+        }
+
+        .three {
+            width: 250px;
+            height: 500px;
+            position: absolute;
+            top: 200px;
+            left: 20px;
+
+        }
+
+        .three_1 {
+            width: 247px;
+            height: 50px;
+            float: left;
+
+        }
+
+        .four {
+            width: 600px;
+            height: 350px;
+            float: left;
+            overflow: scroll;
+        }
+
+        #id {
+            width: 1200px;
+            height: 1000px;
+            position: absolute;
+            left: 300px;
+            top: 200px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="one">
+    <div class="one_1" align="top"><p align="center"><a href="{% url 'register' %}">注册</a></p></div>
+    <div class="one_2" align="top"><p align="center"><a href="{% url 'login' %}">登入</a></p></div>
+    <div class="one_3" align="top"><p align="center"><a href="{% url 'personal' %}">个人中心</a></p></div>
+    <div class="one_4">
+        {% if k1 %}
+            <p>{{ k1 }}<a href="{% url 'background_admin' %}">.后台管理</a></p>
+        {% elif k2 %}
+            <p>{{ k2 }}</p>
+        {% else %}
+            <p>{{ k3 }}</p>
+        {% endif %}
+    </div>
+    <div class="one_5"><p align="center"><a href="{% url 'shop_cart_page' %}">购物车</a></p></div>
+</div>
+</div>
+<div align="left" class="two">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="search" style="height: 35px;width: 550px">
+        <input type="submit" value="搜索" style="height: 40px;width: 60px">
+    </form>
+</div>
+<div class="three">
+    <div class="three_1" align="center" style="background: aqua"><h2 style="color: brown"><a href="{% url 'home_page' %}">全部商品</a></h2></div>
+    <br><br>
+    <br><br><br><br>
+    <div class="three_1" align="center"><h2 style="color: brown"><a href="{% url 'kind_male' %}">上装</a></h2></div>
+    <br><br><br><br>
+    <div class="three_1" align="center"><h2 style="color: brown"><a href="{% url 'kind_female' %}">下装</a></h2></div>
+    <br><br><br><br>
+    <div class="three_1" align="center"><h2 style="color: brown"><a href="{% url 'kind_shoes' %}">鞋子</a></h2></div>
+    <br><br><br><br>
+    <div class="three_1" align="center"><h2 style="color: brown"><a href="{% url 'kind_clothes' %}">配件</a></h2></div>
+    <br><br><br><br>
+
+</div>
+<div id="id" align="center">
+    {% for k in key %}
+        {% load static %}
+        <img src="/static/{{ k.key6 }}.jpg" alt="加载失败" width="450px" height="300px">
+        <h2>{{ k.key7 }}</h2>
+        <h3>价格：{{ k.key5 }}元</h3>
+        <h3>尺码：{{ k.key4 }}</h3>
+        <h3>剩余数量：{{ k.key8 }}</h3>
+        <h3><a href="{% url 'shopping_cart' k.key0 %}">添加到购物车</a></h3>
+        <h3 style="color: red">{{ tip }}</h3>
+    {% endfor %}
+    <div class="four" align="left">
+        {% if key2 %}
+            {{ key2 }}
+        {% else %}
+            {% for k in key1 %}
+                <h3 style="color: chocolate">用户：{{ k.key1 }}</h3>
+                <p>评分：{{ k.key4 }}</p>
+                <p>评价：{{ k.key3 }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>
